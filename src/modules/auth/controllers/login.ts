@@ -1,13 +1,13 @@
-import '@core/declarations';
-import { Request, Response } from 'express';
-import { LoginDTO } from '../dto';
-import requestValidator from '@helpers/request-validator.helper';
-import { GenerateOTP } from '@core/utils';
-import bcrypt from 'bcrypt';
-import moment from 'moment';
+import '@core/declarations'
+import { Request, Response } from 'express'
+import { LoginDTO } from '../dto'
+import requestValidator from '@helpers/request-validator.helper'
+import { GenerateOTP } from '@core/utils'
+import bcrypt from 'bcrypt'
+import moment from 'moment'
 
 export default async function Login(req: Request, res: Response){
-    const { email, password } = req.body;
+    const { email, password } = req.body
     const error = requestValidator(LoginDTO, req.body)
     if(error){
         return res.unprocessableEntity({ error })
@@ -24,8 +24,8 @@ export default async function Login(req: Request, res: Response){
         return res.badRequest({ error: user.blockedReason })
     }
     const otp = GenerateOTP(6)
-    user.otp = otp;
-    user.otpExpiresIn = moment().add(App.Config.VERIFY_OTP_EXPIRES_IN, 'minute');
+    user.otp = otp
+    user.otpExpiresIn = moment().add(App.Config.VERIFY_OTP_EXPIRES_IN, 'minute')
     await user.save()
 
     

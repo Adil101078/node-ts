@@ -16,7 +16,7 @@ export default async function SendEmail({
         user: App.Config.NODE_MAILER.EMAIL,
         pass: App.Config.NODE_MAILER.PASS,
       },
-    });
+    })
 
     const mailOptions = {
       from: App.Config.NODE_MAILER.SENDER,
@@ -24,14 +24,14 @@ export default async function SendEmail({
       subject,
       html: template,
       attachments,
-    };
+    }
 
-    const info = await transport.sendMail(mailOptions);
+    const info = await transport.sendMail(mailOptions)
 
-    Logger.info(`Email sent successfully to ${to}!`);
-    return info;
+    Logger.info(`Email sent successfully to ${to}!`)
+    return info
   } catch (err) {
-    Logger.error(JSON.stringify(err?.message));
-    throw err;
+    Logger.error(JSON.stringify(err?.message))
+    throw err
   }
 }

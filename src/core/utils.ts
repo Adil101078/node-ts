@@ -1,10 +1,10 @@
 import '@core/declarations'
-import { Request, Response, NextFunction } from 'express';
-import * as fs from 'fs';
-import ejs from 'ejs';
-import { I_User } from '@models/user';
-import jwt from 'jsonwebtoken';
-import crypto from 'node:crypto';
+import { Request, Response, NextFunction } from 'express'
+import * as fs from 'fs'
+import ejs from 'ejs'
+import { I_User } from '@models/user'
+import jwt from 'jsonwebtoken'
+import crypto from 'node:crypto'
 
 export const FileExistsSync = (FilePath) => {
     return fs.existsSync(`${FilePath}.js`) || fs.existsSync(`${FilePath}.ts`)
@@ -55,12 +55,12 @@ export function GenerateAuthToken(payload: I_User): string {
     payload,
     App.Config.JWT_SECRET,
     { expiresIn: App.Config.JWT_EXPIRY }
-    );
+    )
 
-  return token;
+  return token
 }
 export function GenerateRandomString(length: number): string {
-  const byteLength = Math.ceil(length / 2); // Each byte represents two characters in hexadecimal form.
-  const randomBytes = crypto.randomBytes(byteLength);
-  return randomBytes.toString('hex').slice(0, length);
+  const byteLength = Math.ceil(length / 2) // Each byte represents two characters in hexadecimal form.
+  const randomBytes = crypto.randomBytes(byteLength)
+  return randomBytes.toString('hex').slice(0, length)
 }

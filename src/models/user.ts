@@ -1,7 +1,7 @@
-import '@core/declarations';
-import { Schema, model as Model } from 'mongoose';
-import bcrypt from 'bcrypt';
-import constant from '@core/constants';
+import '@core/declarations'
+import { Schema, model as Model } from 'mongoose'
+import bcrypt from 'bcrypt'
+import constant from '@core/constants'
 
 type documents = {
     key: string;

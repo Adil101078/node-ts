@@ -1,5 +1,5 @@
-import constant from '@core/constants';
-import joi from 'joi';
+import constant from '@core/constants'
+import joi from 'joi'
 
 export const LoginDTO = joi.object({
     email: joi.string().email().required(),

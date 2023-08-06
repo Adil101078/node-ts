@@ -1,8 +1,8 @@
-import { Router } from 'express';
-import Controller from '../controllers';
-import { Wrap } from '@core/utils';
+import { Router } from 'express'
+import Controller from '../controllers'
+import { Wrap } from '@core/utils'
 
-const router = Router();
+const router = Router()
 
 router.post('/login', Wrap(Controller.Login))
 router.post('/register', Wrap(Controller.Register))

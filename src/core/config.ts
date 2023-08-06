@@ -1,5 +1,5 @@
-import '@core/declarations';
-import { FileExistsSync } from './utils';
+import '@core/declarations'
+import { FileExistsSync } from './utils'
 
 export interface ConfigInterface {
     PORT: number

@@ -1,6 +1,6 @@
-import '@core/declarations';
-import { Router } from 'express';
-import authRouter from '@modules/auth/routes';
+import '@core/declarations'
+import { Router } from 'express'
+import authRouter from '@modules/auth/routes'
 
 const router = Router()
 

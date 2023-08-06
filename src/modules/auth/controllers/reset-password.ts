@@ -1,7 +1,7 @@
-import { Request, Response } from 'express';
-import requestValidator from '@helpers/request-validator.helper';
-import { ResetPasswordDTO } from '../dto';
-import bcrypt from 'bcrypt';
+import { Request, Response } from 'express'
+import requestValidator from '@helpers/request-validator.helper'
+import { ResetPasswordDTO } from '../dto'
+import bcrypt from 'bcrypt'
 
 export default async function ResetPassword(req: Request, res: Response){
     const error = requestValidator(ResetPasswordDTO.Body, req.body)
@@ -12,7 +12,7 @@ export default async function ResetPassword(req: Request, res: Response){
     if(_error){
         return res.unprocessableEntity({ error:_error })
     }
-    const { password, confirmPassword } = req.body;
+    const { password, confirmPassword } = req.body
     const  { token } = req.query
     const user = await App.Models.User.findOne({resetPasswordToken: token})
 
@@ -25,6 +25,6 @@ export default async function ResetPassword(req: Request, res: Response){
     const hashPass = await bcrypt.hash(password, App.Config.SALT_ROUND)
     user.password = hashPass
     user.resetPasswordToken = null
-    await user.save();
+    await user.save()
     return res.success({ message: App.Message.Success.PasswordReset()})
 }

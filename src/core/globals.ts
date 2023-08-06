@@ -4,7 +4,7 @@ import { GenerateCallableMessages } from "./utils"
 import messages from '../response-messages'
 
 // Database Models
-import UserModel from "@models/user";
+import UserModel from "@models/user"
 const config: ConfigInterface = Config()
 // Export Global Variables
 export const Global: any = global
